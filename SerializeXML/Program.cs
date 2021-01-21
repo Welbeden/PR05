@@ -62,26 +62,18 @@ namespace Serialize_People
 
         private static void Serialize(Person sp)
         {
-            // Создаем файл для сохранения данных
             FileStream fs = new FileStream("Person.xml", FileMode.Create);
-            // Создаем объект XmlSerializer для выполнения сериализации
             XmlSerializer xs = new XmlSerializer(typeof(Person));
-            // Используем объект XmlSerializer для сериализации данных в файл
             xs.Serialize(fs, sp);
-            // Закрываем файл
             fs.Close();
         }
 
         private static Person Deserialize()
         {
             Person dsp = new Person();
-            // Создаем файл для сохранения данных
             FileStream fs = new FileStream("Person.xml", FileMode.Open);
-            // Создаем объект XmlSerializer для выполнения десериализации
             XmlSerializer xs = new XmlSerializer(typeof(Person));
-            // Используем объект XmlSerializer для десериализации данных в файл
             dsp = (Person)xs.Deserialize(fs);
-            // Закрываем файл
             fs.Close();
             return dsp;
         }
